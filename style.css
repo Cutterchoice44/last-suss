@@ -34,7 +34,7 @@ header {
 
 header .logo {
   flex: 0 0 auto;  /* don’t stretch or shrink */
-  height: 80px;
+  height: 180px;          /* increased by 50% */
   margin-bottom: 0.3rem;
 }
 
@@ -88,6 +88,10 @@ header .title .tagline {
   #now-art {
     max-width: 600px;
   }
+  /* Desktop override: further boost if needed */
+  header .logo {
+    height: 180px !important;  /* keep 50% larger */
+  }
 }
 
 /* ─── SECTIONS ────────────────────────────────────────────────────────────── */
@@ -124,7 +128,7 @@ section h2 {
 .live-player iframe,
 .live-player audio {
   width: 100%;
-  height: 300px;
+  height: 500px;
   max-height: 55vh;
   border: none;
   border-radius: 4px;
@@ -318,8 +322,7 @@ section h2 {
 
 /* PLAYER HEIGHT OVERRIDES (desktop only) */
 .live-player iframe,
-.player-container iframe {
-  height: 90vh !important;
+.player-container iframe {\n  height: 90vh !important;
   margin-top: 10px !important;
 }
 
@@ -361,23 +364,7 @@ section h2 {
   .chat iframe    { height: 650px !important; }
   .live-player iframe,
   .live-player audio { height: 80px !important; }
-
-  /* Artwork & Popouts */
-  #now-art        { display: none !important; }
-  .popout-btn     { display: none !important; }
-
-  /* Footer */
-  .banner         { display: none !important; }
-
-  /* Mixcloud list adjustments (desktop-only anyway) */
-  #mixcloud-list { max-height: 450px; }
-  #mixcloud-list iframe { height: 150px; }
-
-  /* Inputs & Buttons */
-  .add-mixcloud input  { width: 95%; }
-  .add-mixcloud button { width: 100%; }
 }
-
 
 /* MOBILE FIXES */
 .chat-btn-mobile {
@@ -385,7 +372,7 @@ section h2 {
 }
 @media (max-width: 768px) {
   /* 1. Hide the second logo on mobile */
-  header .logo-container:nth-of-type(3) {
+  header .logo-container:nth-ofype(3) {
     display: none !important;
   }
   /* 2. Hide the redundant archive title under player */
@@ -445,7 +432,7 @@ section h2 {
 /* DESKTOP: increase header logo size by 50% */
 @media (min-width: 900px) {
   header .logo {
-    height: 120px !important;
+    height: 180px !important;
   }
 }
 
@@ -454,5 +441,29 @@ section h2 {
   .popout-btn {
     display: inline-block !important;
     margin: 0.5rem auto !important;
+  }
+}
+
+/* SLIDESHOW: enlarge by 20% and teal border */
+#slideshow {
+  transform: scale(1.2);
+  transform-origin: center center;
+  border: 2px solid var(--brand-teal);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* SLIDESHOW: enlarge DJ artwork by 20% and teal border */
+#now-art {
+  max-width: 420px !important; /* 350px * 1.2 */
+  border: 2px solid var(--brand-teal) !important;
+  display: block !important;
+  margin: 1rem auto !important;
+}
+
+/* DESKTOP: increase header logos by another 50% */
+@media (min-width: 900px) {
+  header .logo {
+    max-width: 270px !important; /* 180px * 1.5 */
   }
 }
